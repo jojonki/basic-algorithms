@@ -1,6 +1,6 @@
 """Selection sort
 """
-def bubble_sort(arr, left_pt=0, ascending=True):
+def selection_sort(arr, left_pt=0, ascending=True):
     if left_pt == len(arr) - 1:
         return
 
@@ -26,7 +26,7 @@ def bubble_sort(arr, left_pt=0, ascending=True):
         arr[min_i] = tmp
         left_pt += 1
 
-    bubble_sort(arr, left_pt, ascending)
+    selection_sort(arr, left_pt, ascending)
 
 
 def main():
@@ -41,14 +41,14 @@ def main():
     for t in test_data:
         print('----------')
         print('In :', t)
-        bubble_sort(t)
+        selection_sort(t)
         print('Out:',t)
 
     print('DESCENDING')
     for t in test_data:
         print('----------')
         print('In :', t)
-        bubble_sort(t, ascending=False)
+        selection_sort(t, ascending=False)
         print('Out:', t)
 
 
