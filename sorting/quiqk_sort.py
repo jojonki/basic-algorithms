@@ -24,11 +24,16 @@ import random
 #
 #     return quick_sort(left, ascending=ascending) + [pv] + quick_sort(right, ascending=ascending)
 
-def quick_sort(arr, ascending=True):
-    if len(arr) <= 1: return arr
+def quick_sort(arr, left=None, right=None, ascending=True):
+    if left is None:
+        left = 0
+    if right is None:
+        right = len(arr) - 1
+    if right <= left: return
 
-    l, r = 0, len(arr) - 1
-    pivot_id = len(arr) // 2
+    l, r = left, right
+
+    pivot_id = l + (r - l) // 2
     pivot_v = arr[pivot_id]
     while True:
         if ascending:
@@ -46,8 +51,8 @@ def quick_sort(arr, ascending=True):
         l += 1
         r -= 1
 
-    quick_sort(arr[:pivot_id])
-    quick_sort(arr[pivot_id:])
+    quick_sort(arr, left, l-1, ascending=ascending)
+    quick_sort(arr, r+1, right, ascending=ascending)
 
 
 def main():
